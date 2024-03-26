@@ -14,6 +14,7 @@ type todosStore={
     todos:Todo[]
     addTodo:(data:Todo)=>void,
     deleteTodo:(id:number)=>void
+    updateTodo:(id:number,updatedData: Partial<Todo>)=>void
 }
 export const useTodoStore = create<todoStore>((set) => ({
   todo:{text:"",isDone:false,id:Date.now()},
@@ -33,9 +34,21 @@ export const useTodosStore = create<todosStore>((set) => ({
           }));
     },
     deleteTodo:(id)=>{
-      console.log("delr id",id)
         set((state) => ({
             todos: state.todos.filter((todo) => todo.id !== id),
           }));
+    },
+    updateTodo:(id:number, updatedData: Partial<Todo>)=>{
+      console.log("dsdsd ")
+      set((state) => ({
+        todos: state.todos.map((todo) => {
+          if (todo.id === id) {
+            return { ...todo, ...updatedData };
+          }
+          return todo;
+        }),
+      }));
+ 
     }
+    
   }));

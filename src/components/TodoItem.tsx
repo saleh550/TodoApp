@@ -14,18 +14,22 @@ interface Props {
 }
 
 const TodoItem: FC<Props> = ({ item }) => {
-    const {deleteTodo}=useTodosStore(state=>state)
+    const {deleteTodo,updateTodo}=useTodosStore(state=>state)
     const handleDelete=()=>{
         deleteTodo(item.id)
     }
+    const handleStatus=()=>{
+        updateTodo(item.id,{isDone:!item.isDone})
+    }
+    const additionalClasses = item.isDone ? "text-decoration-line-through" : "";
   return (
     <div className="todo-item">
       <div>
-        <p className="text-start mx-2 text-secondary">{item.text}</p>
+        <p className={`text-start mx-2 text-secondary ${additionalClasses}`} >{item.text}</p>
       </div>
       <div className="d-flex px-1">
         <div className="mr-auto">
-          <button className="btn-hide-background btn-todo-item">
+          <button onClick={handleStatus} className="btn-hide-background btn-todo-item ">
             {item.isDone ? (
               <>
                 <AiOutlineReload className="icon" /> Mark undone
