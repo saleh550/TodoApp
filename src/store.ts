@@ -13,7 +13,7 @@ type todoStore = {
 type todosStore={
     todos:Todo[]
     addTodo:(data:Todo)=>void,
-    removeTodo:(id:number)=>void
+    deleteTodo:(id:number)=>void
 }
 export const useTodoStore = create<todoStore>((set) => ({
   todo:{text:"",isDone:false,id:Date.now()},
@@ -32,9 +32,10 @@ export const useTodosStore = create<todosStore>((set) => ({
             todos: [...state.todos, data],
           }));
     },
-    removeTodo:(id)=>{
+    deleteTodo:(id)=>{
+      console.log("delr id",id)
         set((state) => ({
-            todos: state.todos.filter((todo, index) => index !== id),
+            todos: state.todos.filter((todo) => todo.id !== id),
           }));
     }
   }));
