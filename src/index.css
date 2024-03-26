@@ -49,14 +49,16 @@ h6{
   cursor: pointer;
   transition: border-color 0.25s;
 } */
-input{
+.home-input{
   border-radius: 8px;
-  border: 1px solid transparent;
+  border:#616060 solid 1px;
+  background-color: transparent;
+
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #616060;
+  /* background-color: #616060; */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -97,4 +99,28 @@ input{
 .icon{
   /* font-size: 20px; */
   margin-bottom: 3px;
+}
+
+.edit-form {
+  display: flex;
+ padding: 20px;
+}
+.edit-form button{
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  /* font-size: 1em; */
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #5d0101;
+  /* cursor: pointer;
+  transition: border-color 0.25s; */
+}
+
+.edit-form input{
+  height: 35px;
+  border-radius: 8px;
+  background-color: transparent;
+  padding-left: 8px;
+  border: #616060 solid 2px;
 }

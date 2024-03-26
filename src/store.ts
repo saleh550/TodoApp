@@ -39,7 +39,6 @@ export const useTodosStore = create<todosStore>((set) => ({
           }));
     },
     updateTodo:(id:number, updatedData: Partial<Todo>)=>{
-      console.log("dsdsd ")
       set((state) => ({
         todos: state.todos.map((todo) => {
           if (todo.id === id) {

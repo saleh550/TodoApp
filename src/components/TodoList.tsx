@@ -11,7 +11,7 @@ const TodoList: FC = () => {
         todos.map((item) => (
           <>
             <div className="py-2" key={item.id}>
-              <TodoItem item={item} />
+              <TodoItem key={item.id} item={item} />
             </div>
           </>
         ))}
