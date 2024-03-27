@@ -7,6 +7,7 @@ import { AiOutlineReload } from "react-icons/ai";
 import { useTodosStore } from "../store";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
+import toast from "react-hot-toast";
 
 const schema = z.object({
   text: z.string().min(3),
@@ -32,23 +33,35 @@ const TodoItem: FC<Props> = ({ item }) => {
 
   useEffect(() => {
     if (errors.text) {
-      console.log("ddd", errors.text?.message);
+      toast.error(
+        errors.text?.message ? errors.text?.message : "Something Wrong"
+      );
     }
     if (isSubmitSuccessful) {
-      console.log("The is updated successfully");
-      setIsEditing(false)
+      toast.success("Todo updated successfully");
+      setIsEditing(false);
     }
   }, [errors, isSubmitSuccessful]);
 
-  const handleDelete = () => {
-    deleteTodo(item.id);
+  const handleDelete = async () => {
+    try {
+      deleteTodo(item.id);
+      toast.success("Todo deleted successfully");
+    } catch (error) {
+        toast.error("Todo deleting failed");
+    }
   };
-  const handleStatus = () => {
-    updateTodo(item.id, { isDone: !item.isDone });
+  const handleStatus = async () => {
+    try {
+        updateTodo(item.id, { isDone: !item.isDone });
+        toast.success("Todo status updated successfully")
+    } catch (error) {
+        toast.error("Todo status updating failed")
+        
+    }
   };
   const onSubmit: SubmitHandler<FormFeilds> = (data) => {
-    // console.log(data)
-    updateTodo(item.id,data)
+    updateTodo(item.id, data);
   };
   const additionalClasses = item.isDone ? "text-decoration-line-through" : "";
   return (
@@ -58,7 +71,9 @@ const TodoItem: FC<Props> = ({ item }) => {
           <div className="edit-form flex">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input {...register("text")} defaultValue={item.text} />
-              <button className="text-end mx-2" type="submit">Update</button>
+              <button className="text-end mx-2" type="submit">
+                Update
+              </button>
             </form>
           </div>
         </>

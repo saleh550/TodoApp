@@ -1,7 +1,8 @@
 import { FC, useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { string, z } from "zod";
 import { useTodoStore, useTodosStore } from "./store";
 import TodoList from "./components/TodoList";
 import AOS from "aos";
@@ -19,19 +20,28 @@ const App: FC = () => {
     register,
     reset,
     handleSubmit,
-    formState: { errors, isSubmitted, isSubmitting },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
   } = useForm<FormFeilds>({ resolver: zodResolver(schema) });
   useEffect(() => {
     AOS.init();
   }, []);
   useEffect(() => {
-    if (errors.todo) console.log(errors.todo?.message);
-    if (isSubmitted) {
+    if (errors.todo) {
+      if (todo.text == "") {
+        toast.error("Todo field can't be empty !");
+      } else {
+        toast.error(
+          errors.todo.message ? errors.todo.message : "Somthing Wrong"
+        );
+      }
+    }
+    if (isSubmitSuccessful) {
+      toast.success("todo added successfully");
       resetTodo();
       reset();
     }
-  }, [errors, isSubmitted]);
-  const onSubmit: SubmitHandler<FormFeilds> = (data) => {
+  }, [errors, isSubmitSuccessful]);
+  const onSubmit: SubmitHandler<FormFeilds> = () => {
     // console.log(data);
     addTodo(todo);
   };
@@ -62,6 +72,7 @@ const App: FC = () => {
         </div>
         <TodoList />
       </div>
+      <Toaster position="bottom-center" reverseOrder={true} />
     </>
   );
 };

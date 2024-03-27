@@ -34,9 +34,14 @@ export const useTodosStore = create<todosStore>((set) => ({
           }));
     },
     deleteTodo:(id)=>{
+      try {
         set((state) => ({
-            todos: state.todos.filter((todo) => todo.id !== id),
-          }));
+          todos: state.todos.filter((todo) => todo.id !== id),
+        }));
+      } catch (error) {
+        throw new Error("Deleted Failed")
+      }
+
     },
     updateTodo:(id:number, updatedData: Partial<Todo>)=>{
       set((state) => ({
