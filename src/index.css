@@ -87,6 +87,9 @@ h6 {
 
 .edit-form {
   display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
   padding: 20px;
 }
 .edit-form button {
@@ -96,6 +99,7 @@ h6 {
   font-weight: 500;
   font-family: inherit;
   background-color: #5d0101;
+  margin-left:  4px;
 }
 
 .edit-form input {
@@ -103,5 +107,17 @@ h6 {
   border-radius: 8px;
   background-color: transparent;
   padding-left: 8px;
-  border: #616060 solid 2px;
+  border: #616060 solid 1px;
+}
+.empty-alert{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+  margin-top: 30px;
+}
+.alert-icon{
+  margin: 5px 0;
+  font-size: 50px;
 }

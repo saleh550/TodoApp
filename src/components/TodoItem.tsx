@@ -67,10 +67,10 @@ const TodoItem: FC<Props> = ({ item }) => {
     <div data-aos="fade-down" className="todo-item">
       {isEditing ? (
         <>
-          <div className="edit-form flex">
+          <div className="edit-form ">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input {...register("text")} defaultValue={item.text} />
-              <button className="text-end mx-2" type="submit">
+              <button  type="submit">
                 Update
               </button>
             </form>
