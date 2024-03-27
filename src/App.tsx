@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { string, z } from "zod";
+import { z } from "zod";
 import { useTodoStore, useTodosStore } from "./store";
 import TodoList from "./components/TodoList";
 import AOS from "aos";
@@ -42,7 +42,6 @@ const App: FC = () => {
     }
   }, [errors, isSubmitSuccessful]);
   const onSubmit: SubmitHandler<FormFeilds> = () => {
-    // console.log(data);
     addTodo(todo);
   };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

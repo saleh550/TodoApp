@@ -34,24 +34,13 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-h6{
+h6 {
   margin: 0px 0px 0px;
 }
 
-/* button {
+.home-input {
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #063592;
-  cursor: pointer;
-  transition: border-color 0.25s;
-} */
-.home-input{
-  border-radius: 8px;
-  border:#616060 solid 1px;
+  border: #616060 solid 1px;
   background-color: transparent;
 
   padding: 0.6em 1.2em;
@@ -63,10 +52,7 @@ h6{
   transition: border-color 0.25s;
 }
 
-
-
-
-.submit-button{
+.submit-button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -77,47 +63,42 @@ h6{
   cursor: pointer;
   transition: border-color 0.25s;
 }
-.todo-item{
+.todo-item {
   background-color: #1d1d1d;
   max-width: 330px;
   margin: auto;
   border-radius: 8px;
-
 }
-.todo-item button{
+.todo-item button {
   font-size: small;
 }
-.mr-auto{
+.mr-auto {
   margin-right: auto;
 }
 
 .btn-hide-background {
   background-color: transparent !important;
-  border-color: transparent !important; /* Optional: hide button border */
-  color: inherit; /* Optional: inherit text color */
+  border-color: transparent !important;
+  color: inherit;
 }
-.icon{
-  /* font-size: 20px; */
+.icon {
   margin-bottom: 3px;
 }
 
 .edit-form {
   display: flex;
- padding: 20px;
+  padding: 20px;
 }
-.edit-form button{
+.edit-form button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  /* font-size: 1em; */
   font-weight: 500;
   font-family: inherit;
   background-color: #5d0101;
-  /* cursor: pointer;
-  transition: border-color 0.25s; */
 }
 
-.edit-form input{
+.edit-form input {
   height: 35px;
   border-radius: 8px;
   background-color: transparent;

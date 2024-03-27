@@ -48,16 +48,15 @@ const TodoItem: FC<Props> = ({ item }) => {
       deleteTodo(item.id);
       toast.success("Todo deleted successfully");
     } catch (error) {
-        toast.error("Todo deleting failed");
+      toast.error("Todo deleting failed");
     }
   };
   const handleStatus = async () => {
     try {
-        updateTodo(item.id, { isDone: !item.isDone });
-        toast.success("Todo status updated successfully")
+      updateTodo(item.id, { isDone: !item.isDone });
+      toast.success("Todo status updated successfully");
     } catch (error) {
-        toast.error("Todo status updating failed")
-        
+      toast.error("Todo status updating failed");
     }
   };
   const onSubmit: SubmitHandler<FormFeilds> = (data) => {

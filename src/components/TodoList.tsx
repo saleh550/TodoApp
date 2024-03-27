@@ -4,6 +4,7 @@ import TodoItem from "./TodoItem";
 
 const TodoList: FC = () => {
   const { todos } = useTodosStore((state) => state);
+
   return (
     <div>
       {todos.length > 0 &&
